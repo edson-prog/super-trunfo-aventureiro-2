@@ -1,0 +1,108 @@
+#include <stdio.h>
+
+struct Carta {
+    char nome[50];
+    int populacao;
+    float area;
+    float pib;
+    int num_pontos_turisticos;
+    float densidade_demografica;
+};
+
+void exibirMenu() {
+    printf("\nEscolha um atributo para comparar as cartas:\n");
+    printf("1. Populacao\n");
+    printf("2. Area\n");
+    printf("3. PIB\n");
+    printf("4. Numero de pontos turisticos\n");
+    printf("5. Densidade demografica\n");
+    printf("0. Sair\n");
+    printf("Digite o numero correspondente ao atributo: ");
+}
+
+void compararCartas(struct Carta carta1, struct Carta carta2, int escolha) {
+    switch (escolha) {
+        case 1: // População
+            printf("\nAtributo: Populacao\n");
+            printf("País 1: %s - População: %d\n", carta1.nome, carta1.populacao);
+            printf("País 2: %s - População: %d\n", carta2.nome, carta2.populacao);
+            if (carta1.populacao > carta2.populacao) {
+                printf("%s venceu!\n", carta1.nome);
+            } else if (carta1.populacao < carta2.populacao) {
+                printf("%s venceu!\n", carta2.nome);
+            } else {
+                printf("Empate!\n");
+            }
+            break;
+        case 2: // Área
+            printf("\nAtributo: Area\n");
+            printf("País 1: %s - Área: %.2f\n", carta1.nome, carta1.area);
+            printf("País 2: %s - Área: %.2f\n", carta2.nome, carta2.area);
+            if (carta1.area > carta2.area) {
+                printf("%s venceu!\n", carta1.nome);
+            } else if (carta1.area < carta2.area) {
+                printf("%s venceu!\n", carta2.nome);
+            } else {
+                printf("Empate!\n");
+            }
+            break;
+        case 3: // PIB
+            printf("\nAtributo: PIB\n");
+            printf("País 1: %s - PIB: %.2f\n", carta1.nome, carta1.pib);
+            printf("País 2: %s - PIB: %.2f\n", carta2.nome, carta2.pib);
+            if (carta1.pib > carta2.pib) {
+                printf("%s venceu!\n", carta1.nome);
+            } else if (carta1.pib < carta2.pib) {
+                printf("%s venceu!\n", carta2.nome);
+            } else {
+                printf("Empate!\n");
+            }
+            break;
+        case 4: // Número de pontos turísticos
+            printf("\nAtributo: Numero de pontos turisticos\n");
+            printf("País 1: %s - Pontos turísticos: %d\n", carta1.nome, carta1.num_pontos_turisticos);
+            printf("País 2: %s - Pontos turísticos: %d\n", carta2.nome, carta2.num_pontos_turisticos);
+            if (carta1.num_pontos_turisticos > carta2.num_pontos_turisticos) {
+                printf("%s venceu!\n", carta1.nome);
+            } else if (carta1.num_pontos_turisticos < carta2.num_pontos_turisticos) {
+                printf("%s venceu!\n", carta2.nome);
+            } else {
+                printf("Empate!\n");
+            }
+            break;
+        case 5: // Densidade demográfica
+            printf("\nAtributo: Densidade Demografica\n");
+            printf("País 1: %s - Densidade: %.2f\n", carta1.nome, carta1.densidade_demografica);
+            printf("País 2: %s - Densidade: %.2f\n", carta2.nome, carta2.densidade_demografica);
+            if (carta1.densidade_demografica < carta2.densidade_demografica) {
+                printf("%s venceu!\n", carta1.nome);
+            } else if (carta1.densidade_demografica > carta2.densidade_demografica) {
+                printf("%s venceu!\n", carta2.nome);
+            } else {
+                printf("Empate!\n");
+            }
+            break;
+        default:
+            printf("Opcao invalida!\n");
+            break;
+    }
+}
+
+int main() {
+    // Cartas de exemplo
+    struct Carta carta1 = {"Brasil", 211049527, 8515767.0, 2105000.0, 25000, 24.7};
+    struct Carta carta2 = {"Alemanha", 83019200, 357022.0, 3806000.0, 25000, 232.5};
+
+    int escolha;
+    
+    do {
+        exibirMenu();
+        scanf("%d", &escolha);
+        if (escolha != 0) {
+            compararCartas(carta1, carta2, escolha);
+        }
+    } while (escolha != 0);
+
+    printf("Programa encerrado!\n");
+    return 0;
+}
